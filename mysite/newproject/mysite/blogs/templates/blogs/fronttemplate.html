@@ -1,0 +1,21 @@
+{% extends "blog_template.html" %}
+
+{% block main %}
+<h1> My Posts </h1>
+  {% for post in blog_list %}
+    <h2><a href="{% url 'blogs:post' post.id post.tag_id %}">{{ post.title}}</a></h2>
+      <form action="{% url 'blogs:delete' post.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete" style="height:20px;width:50px;font-size:12px;"/>
+      </form>
+    {{ post.body}}
+    <hr>
+    <div class="post_footer">Last Updated Time: {{ post.timestamp }} | Tags: {{ post.tags }}</div>
+  {% endfor %}
+{% endblock %}
+
+{% block headtag %}
+	{% for tag in tag_list %}
+	<a href="{% url 'blogs:tagpost' tag.id  %}" class="w3-bar-item w3-button">{{tag.tag_name}}</a>
+	{% endfor %}
+{% endblock %}

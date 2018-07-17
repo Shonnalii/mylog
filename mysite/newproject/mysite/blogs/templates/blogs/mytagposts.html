@@ -1,0 +1,17 @@
+{% extends "myposttemplate.html" %}
+
+{% block main %}
+<a href="{% url 'blogs:writepost' tag_id %}">Write a blog</a>
+<h1> My Posts </h1>
+  {% for post in blog_list %}
+      <h2><a href="{% url 'blogs:post' post.id tag_id %}">{{ post.title}}</a></h2>
+      {{ post.body|linebreaks}}{{post.id}}{{post.title}}
+    <hr>
+    <div class="post_footer">Last Updated Time: {{ post.timestamp }} | Tags: {{ post.tags }}</div>
+  {% endfor %}
+{% endblock %}
+{% block headtag %}
+	{% for tag in tag_list %}
+	   <a href="{% url 'blogs:tagpost' tag.id  %}" class="w3-bar-item w3-button">{{tag.tag_name}}</a>
+	{% endfor %}
+{% endblock %}

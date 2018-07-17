@@ -1,0 +1,10 @@
+{% if blog_list %}
+    <ul>
+    {% for blog in blog_list %}
+        <li><a href="{% url 'blogs:post' blog.id %}">{{ blog.title}}</a></li>
+          {{ blog.body}}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Blogs.</p>
+{% endif %}

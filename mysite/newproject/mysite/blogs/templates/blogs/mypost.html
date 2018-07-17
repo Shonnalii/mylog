@@ -1,0 +1,25 @@
+{% extends "blog_template.html" %}
+{% block title %}
+<h1>{{ blog.title }}</h1>
+{% endblock %}
+{% block main %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'blogs:edit' blog.id tag_id %}" method="post">
+{% csrf_token %}
+  <!-- <label for="{{blog.id}}">tag_id{{blog.title}}</label><br />-->
+  {% if blog.publish %}
+    <input type="text" name="body" id="{{blog.id}}" value="{{ blog.body }}" />
+<input type="submit" value="Save" />
+  {% else %}
+  {{blog.body|linebreaks}}
+
+<input type="submit" value="Edit" />
+    {% endif %}
+
+</form>
+{% endblock %}
+{% block headtag %}
+	{% for tag in tag_list %}
+	<a href="{% url 'blogs:tagpost' tag.id  %}" class="w3-bar-item w3-button">{{tag.tag_name}}</a>
+	{% endfor %}
+{% endblock %}

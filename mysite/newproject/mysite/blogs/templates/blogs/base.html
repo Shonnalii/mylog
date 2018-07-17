@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/reset-fonts-grids/reset-fonts-grids.css">
+  <link rel="stylesheet" type="text/css" href="/site_media/css/mystyle.css">
+  <title>{% block title %}Sofeng's Blog Version {{ VERSION }}{% endblock %}</title>
+</head>
+
+<body>
+  <div id="doc" class="yui-t4">
+    <div id="hd">
+      <h1>Sonali's Blog Version {{ VERSION }}</h1>
+    </div>
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          {% block main %}{% endblock %}
+        </div>
+      </div>
+      <div class="yui-b" id="sidebar">
+        {% block sidebar %}
+        <h3>ABOUT</h3>
+        <p>This is my new blog created using <a href="http://www.djangoproject.com">Django</a>,
+          a <a href="http://www.python.org">Python</a> web framework. This site is under
+          construction. My current blog is located at:
+          <a href="http://iwiwdsmi.blogspot.com">http://iwiwdsmi.blogspot.com</a>.
+        </p>
+        {% endblock %}
+      </div>
+    </div>
+    <div id="ft">
+      A <a href="http://www.djangoproject.com/">Django</a> site.
+    </div>
+  </div>
+</body>
+</html>
